@@ -1,6 +1,8 @@
 sample-dynamoDB
 ===============
-It's a simple app illustrating using AWS DynamoDB in java.
+It's a simple app using AWS DynamoDB in java.
+
+Additional info can be found here: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/AboutJava.html
 
 Requirements:
 1) AWS account http://aws.amazon.com/free/
