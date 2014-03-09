@@ -1,27 +1,30 @@
-import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperConfig;
+import model.ScoringData;
+import utility.AmazonClient;
+import utility.RandomGeneration;
 
-public class Item {
+public class Item extends RandomGeneration {
 
-	private static AmazonDynamoDBClient client = AmazonDynamoDBSample.client;
 	private static DynamoDBMapperConfig config = new DynamoDBMapperConfig(DynamoDBMapperConfig.ConsistentReads.CONSISTENT);
-	private static DynamoDBMapper mapper = new DynamoDBMapper(client);
+	private static DynamoDBMapper mapper = new DynamoDBMapper(AmazonClient.getClient());
+
+    public Item(){ }
 	
-	public static void insert(Long INN){
+	public void insert(Long INN){
 		ScoringData item = new ScoringData();
 		item.setINN(INN);
-		item.setKP1(RandomGeneration.randomFloat(3));
-		item.setKP2(RandomGeneration.randomFloat(3));
-		item.setKP3(RandomGeneration.randomFloat(3));
-		item.setKP4(RandomGeneration.randomFloat(3));
-		item.setKP5(RandomGeneration.randomFloat(3));
-		item.setKP6(RandomGeneration.randomFloat(3));
-		item.setKP7(RandomGeneration.randomFloat(3));
+		item.setKP1(randomFloat(3));
+		item.setKP2(randomFloat(3));
+		item.setKP3(randomFloat(3));
+		item.setKP4(randomFloat(3));
+		item.setKP5(randomFloat(3));
+		item.setKP6(randomFloat(3));
+		item.setKP7(randomFloat(3));
         mapper.save(item);
 	}
 	
-	public static void delete(Long INN){
+	public void delete(Long INN){
 		ScoringData item = mapper.load(ScoringData.class, INN, config);
 		if(item != null){
 			mapper.delete(item);
@@ -29,7 +32,7 @@ public class Item {
 		}
 	}	
 	
-	public static void display(Long INN){
+	public void display(Long INN){
 		ScoringData item = mapper.load(ScoringData.class, INN, config);
 		if(item != null){			
 			System.out.println(item);
