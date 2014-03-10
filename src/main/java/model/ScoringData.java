@@ -6,7 +6,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
 @DynamoDBTable(tableName="scoringmethod")
 public class ScoringData {
-	private Long INN;
+    private Long INN;
     private float kp1;
     private float kp2;
     private float kp3;
