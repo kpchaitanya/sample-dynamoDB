@@ -9,7 +9,7 @@ import utility.RandomGeneration;
 
 public class AmazonDynamoDBSample {
 
-	private static AmazonDynamoDBClient client = AmazonClient.getClient();
+    private static AmazonDynamoDBClient client = AmazonClient.getClient();
     
     public static void main(String[] args) throws Exception {
         RandomGeneration rnd = new RandomGeneration();
@@ -31,7 +31,7 @@ public class AmazonDynamoDBSample {
 
         // make some calculations and put result into another table
         try {
-        	makeScoring(inn1);
+            makeScoring(inn1);
         } catch (AmazonServiceException ase) {
             System.err.println("Operation failed. "+ase);
         } 
