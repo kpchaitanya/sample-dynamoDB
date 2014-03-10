@@ -10,15 +10,15 @@ import utility.AmazonClient;
 
 public class Query extends Item {
 
-	private static DynamoDBMapper mapper = new DynamoDBMapper(AmazonClient.getClient());
-	private static DynamoDBScanExpression query = new DynamoDBScanExpression();
+        private static DynamoDBMapper mapper = new DynamoDBMapper(AmazonClient.getClient());
+        private static DynamoDBScanExpression query = new DynamoDBScanExpression();
 
-    public Query(){}
+        public Query(){}
 	
 	public void findItemsWithGreaterValue(String attr, float value){
 		Condition condition = new Condition()
-									.withComparisonOperator(ComparisonOperator.GT)
-									.withAttributeValueList(new AttributeValue().withN(String.valueOf(value)));
+					.withComparisonOperator(ComparisonOperator.GT)
+					.withAttributeValueList(new AttributeValue().withN(String.valueOf(value)));
 		query.addFilterCondition(attr, condition);
 		List<ScoringData> result = mapper.scan(ScoringData.class, query);
 		for(ScoringData item: result){
@@ -28,8 +28,8 @@ public class Query extends Item {
 	
 	public void countAllRows(Class<?> clazz){
 		Condition condition = new Condition()
-									.withComparisonOperator(ComparisonOperator.GT)
-									.withAttributeValueList(new AttributeValue().withN("1"));
+					.withComparisonOperator(ComparisonOperator.GT)
+					.withAttributeValueList(new AttributeValue().withN("1"));
 		query.addFilterCondition("INN", condition);
 		int result = mapper.count(clazz, query);
 		System.out.println("Number of rows: "+result);
