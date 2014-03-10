@@ -6,8 +6,8 @@ import utility.RandomGeneration;
 
 public class Item extends RandomGeneration {
 
-	private static DynamoDBMapperConfig config = new DynamoDBMapperConfig(DynamoDBMapperConfig.ConsistentReads.CONSISTENT);
-	private static DynamoDBMapper mapper = new DynamoDBMapper(AmazonClient.getClient());
+    private static DynamoDBMapperConfig config = new DynamoDBMapperConfig(DynamoDBMapperConfig.ConsistentReads.CONSISTENT);
+    private static DynamoDBMapper mapper = new DynamoDBMapper(AmazonClient.getClient());
 
     public Item(){ }
 	
@@ -21,7 +21,7 @@ public class Item extends RandomGeneration {
 		item.setKP5(randomFloat(3));
 		item.setKP6(randomFloat(3));
 		item.setKP7(randomFloat(3));
-        mapper.save(item);
+                mapper.save(item);
 	}
 	
 	public void delete(Long INN){
